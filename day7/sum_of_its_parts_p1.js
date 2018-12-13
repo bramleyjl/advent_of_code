@@ -31,8 +31,6 @@ while (Object.keys(instructions).length > 0) {
     }, []);
 
     if (blockedLetters.indexOf(currentLetter) === -1) {
-      console.log(currentLetter)
-      console.log(blockedLetters)
       orderedInstructions.push(currentLetter);
       delete instructions[currentLetter];
       for (var list in instructions) {
