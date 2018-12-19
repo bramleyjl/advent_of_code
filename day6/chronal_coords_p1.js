@@ -1,7 +1,6 @@
 var fs = require('fs')
 //var coords = fs.readFileSync('./test_coords.txt').toString().split('\n');
 var coords = fs.readFileSync('./real_coords.txt').toString().split('\n');
-
 var labeledCoords = {};
 var maxX = 0;
 var maxY = 0;
@@ -9,7 +8,12 @@ for(var i = 0; i < coords.length; i++){
   var strippedCoords = coords[i].match(/\d+/g);
   if (strippedCoords[0] > maxX) maxX = Number(strippedCoords[0]);
   if (strippedCoords[1] > maxY) maxY = Number(strippedCoords[1]);
-  labeledCoords[String.fromCharCode(65 + i)] = strippedCoords;
+  if (i > 25) {
+    var label = String.fromCharCode(65 + i - 26) + String.fromCharCode(65 + i - 26);
+  } else {
+    var label = String.fromCharCode(65 + i);
+  }
+  labeledCoords[label] = strippedCoords;
 }
 
 var chart = [];
